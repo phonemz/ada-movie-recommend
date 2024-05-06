@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Recommendations</title>
-</head>
-<body>
-    <h1>Recommended Movies for "{{ search_name }}"</h1>
-    <ul>
-        {% for i in range(movie_names|length) %}
-            <li><a href="{{ movie_homepage[i] }}" target="_blank">{{ movie_names[i] }}</a> - Release Date: {{ movie_releaseDate[i] }}</li>
-        {% endfor %}
-    </ul>
-</body>
+        <head>
+                <meta charset="UTF-8" />
+                <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1.0"
+                />
+                <title>Recommended Movies</title>
+                <link
+                        rel="stylesheet"
+                        type="text/css"
+                        href="{{ url_for('static', filename='styles.css') }}"
+                />
+        </head>
+        <body>
+                <div class="container">
+                        <h1>Recommended Movies for "{{ movie_name }}"</h1>
+                        <ul class="movie-list">
+                                {% for movie in related_movies %}
+                                <li>{{ movie }}</li>
+                                {% endfor %}
+                        </ul>
+                </div>
+        </body>
 </html>
